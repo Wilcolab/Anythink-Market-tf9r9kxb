@@ -49,5 +49,4 @@ To build and run the application in a Docker container, use the following comman
 The server will be accessible at [http://localhost:8001](http://localhost:8001) from your host machine.
 
 ### License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
