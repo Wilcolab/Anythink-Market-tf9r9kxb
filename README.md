@@ -1,39 +1,56 @@
-# Python Server
 
-This project contains a FastAPI server implemented in Python. It provides two routes for managing a task list.
+# Anythink-Market: Python & Node.js Servers
+
+This project contains two servers:
+
+- **Python FastAPI server** (port 8000)
+- **Node.js Express server** (port 8001)
+
+The Node.js server is a migration of the Python server's routes and logic, now implemented using Express.
 
 ## Project Structure
 
-The project has the following files and directories:
+- `python-server/`: FastAPI server implementation
+- `my-express-app/`: Express server implementation
+- `docker-compose.yml`: Multi-container orchestration for both servers
 
-- `python-server/src/main.py`: This file contains the implementation of the FastAPI server with two routes. It handles adding a task to a list and retrieving the list.
+## Migration Details
 
-- `python-server/src/__init__.py`: This file is an empty file that marks the `src` directory as a Python package.
+The following routes and logic were migrated from Python (FastAPI) to Node.js (Express):
 
-- `python-server/requirements.txt`: This file lists the dependencies required for the FastAPI server and other dependencies.
+| Route         | Method | Python (FastAPI) Behavior                | Node.js (Express) Behavior         |
+|---------------|--------|------------------------------------------|------------------------------------|
+| `/`           | GET    | Returns "Hello World"                    | Returns "Hello World"              |
+| `/tasks`      | GET    | Returns a list of tasks                  | Returns a list of tasks            |
+| `/tasks`      | POST   | Adds a task to the list (JSON body)      | Adds a task to the list (JSON body)|
 
-- `python-server/Dockerfile`: This file is used to build a Docker image for the FastAPI server. It specifies the base image, copies the source code into the image, installs the dependencies, and sets the command to run the server.
-
-- `docker-compose.yml`: This file is used to define and run multi-container Docker applications. It specifies the services to run, their configurations, and any dependencies between them.
+Both servers use an in-memory array for tasks.
 
 ## Getting Started
 
-To run the FastAPI server using Docker, follow these steps:
+To run both servers using Docker Compose:
 
-- Build and start the Docker containers by running the following command:
+```shell
+docker compose up
+```
 
-  ```shell
-  docker compose up
-  ```
+This will build and start both the FastAPI and Express servers. Access them at:
 
-  This command will build the Docker image for the FastAPI server and start the containers defined in the `docker-compose.yml` file.
+- FastAPI (Python): [http://localhost:8000](http://localhost:8000)
+- Express (Node.js): [http://localhost:8001](http://localhost:8001)
 
-- The FastAPI server should now be running. You can access at port `8000`.
+## API Routes (Node.js)
 
-## API Routes
+- `GET /` — Returns "Hello World"
+- `GET /tasks` — Returns the task list
+- `POST /tasks` — Adds a task to the list. Expects JSON: `{ "text": "..." }`
 
-The FastAPI server provides the following API routes:
+## API Routes (Python)
 
-- `POST /tasks`: Adds a task to the task list. The request body should contain the task details.
+- `GET /` — Returns "Hello World"
+- `GET /tasks` — Returns the task list
+- `POST /tasks` — Adds a task to the list. Expects JSON: `{ "text": "..." }`
 
-- `GET /tasks`: Retrieves the task list.
+---
+
+See each subdirectory's README for more details on running the servers individually.
