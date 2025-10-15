@@ -1,56 +1,18 @@
+# GitHub Copilot Workshop
 
-# Anythink-Market: Python & Node.js Servers
+## Enhance a Node Calculator app using GitHub Copilot
 
-This project contains two servers:
+<img width="400" alt="Node Calculator image" src="./assets/Node%20calculator%20image.png">
 
-- **Python FastAPI server** (port 8000)
-- **Node.js Express server** (port 8001)
+The project contains a simple node.js application that exposes REST APIs to perform arithmetic on integers, and provides a test suite with mocha and chai.
 
-The Node.js server is a migration of the Python server's routes and logic, now implemented using Express.
+## Instructions 
 
-## Project Structure
+In order to run the app use `npm start`
 
-- `python-server/`: FastAPI server implementation
-- `my-express-app/`: Express server implementation
-- `docker-compose.yml`: Multi-container orchestration for both servers
+## Acknowledgements
 
-## Migration Details
+A special thanks to the following awesome Hubbers who have contributed in many different ways to this repository. 
+[pierluigi](https://github.com/pierluigi), [parroty](https://github.com/yuichielectric), [yuichielectric](https://github.com/yuichielectric), [dchomh](https://github.com/dchomh), [nolecram](https://github.com/nolecram), [rsymo](https://github.com/rsymo), [damovisa](https://github.com/damovisa) and anyone else I've inadvertently missed.
 
-The following routes and logic were migrated from Python (FastAPI) to Node.js (Express):
-
-| Route         | Method | Python (FastAPI) Behavior                | Node.js (Express) Behavior         |
-|---------------|--------|------------------------------------------|------------------------------------|
-| `/`           | GET    | Returns "Hello World"                    | Returns "Hello World"              |
-| `/tasks`      | GET    | Returns a list of tasks                  | Returns a list of tasks            |
-| `/tasks`      | POST   | Adds a task to the list (JSON body)      | Adds a task to the list (JSON body)|
-
-Both servers use an in-memory array for tasks.
-
-## Getting Started
-
-To run both servers using Docker Compose:
-
-```shell
-docker compose up
-```
-
-This will build and start both the FastAPI and Express servers. Access them at:
-
-- FastAPI (Python): [http://localhost:8000](http://localhost:8000)
-- Express (Node.js): [http://localhost:8001](http://localhost:8001)
-
-## API Routes (Node.js)
-
-- `GET /` — Returns "Hello World"
-- `GET /tasks` — Returns the task list
-- `POST /tasks` — Adds a task to the list. Expects JSON: `{ "text": "..." }`
-
-## API Routes (Python)
-
-- `GET /` — Returns "Hello World"
-- `GET /tasks` — Returns the task list
-- `POST /tasks` — Adds a task to the list. Expects JSON: `{ "text": "..." }`
-
----
-
-See each subdirectory's README for more details on running the servers individually.
+_v1.0 Released June, 2023_
